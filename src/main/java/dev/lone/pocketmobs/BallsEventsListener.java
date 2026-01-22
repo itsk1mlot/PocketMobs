@@ -1,6 +1,6 @@
 package dev.lone.pocketmobs;
 
-import dev.lone.LoneLibs.nbt.nbtapi.NBTItem;
+import de.tr7zw.changeme.nbtapi.NBTItem;
 import dev.lone.pocketmobs.data.Ball;
 import dev.lone.pocketmobs.data.BallEffectType;
 import dev.lone.pocketmobs.utils.*;

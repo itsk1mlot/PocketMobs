@@ -10,7 +10,7 @@ public class HologramUtil
     static void spawn(Location location, String message, int duration)
     {
         location.getWorld().spawn(location, AreaEffectCloud.class, newEntity -> {
-            newEntity.setParticle(Particle.TOWN_AURA);
+            newEntity.setParticle(Particle.MYCELIUM);
             newEntity.setRadius(0.0F);
 
             newEntity.setCustomName(message);

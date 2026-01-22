@@ -1,8 +1,8 @@
 package dev.lone.pocketmobs;
 
-import dev.lone.LoneLibs.nbt.nbtapi.NBTEntity;
-import dev.lone.LoneLibs.nbt.nbtapi.NBTReflectionUtil;
-import dev.lone.LoneLibs.nbt.nbtapi.utils.nmsmappings.ReflectionMethod;
+import de.tr7zw.changeme.nbtapi.NBTEntity;
+import de.tr7zw.changeme.nbtapi.NBTReflectionUtil;
+import de.tr7zw.changeme.nbtapi.utils.nmsmappings.ReflectionMethod;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -27,10 +27,22 @@ public class CaughtMob
         nbtTagCompound = nbtEntity.asNBTString();
     }
 
-    public double getLife()
-    {
+    public double getLife() {
         Object nbt = ReflectionMethod.PARSE_NBT.run(null, nbtTagCompound);
-        return (double) ReflectionMethod.COMPOUND_GET_DOUBLE.run(nbt, "Health");
+        Object v = ReflectionMethod.COMPOUND_GET_DOUBLE.run(nbt, "Health");
+
+        // Paper/버전에 따라 Optional로 올 수 있음
+        if (v instanceof java.util.Optional<?> opt) {
+            v = opt.orElse(null);
+        }
+
+        // Health는 Double/Float/Integer 등 Number로 올 수 있음
+        if (v instanceof Number num) {
+            return num.doubleValue();
+        }
+
+        // 못 얻으면 0 처리(원하면 기본값을 20.0 같은 걸로 바꿔도 됨)
+        return 0.0;
     }
 
     public Entity spawnEntity(Location location, Item item)

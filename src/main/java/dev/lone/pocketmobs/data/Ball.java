@@ -1,15 +1,17 @@
 package dev.lone.pocketmobs.data;
 
-import de.erethon.headlib.HeadLib;
+import com.destroystokyo.paper.profile.PlayerProfile;
+import com.destroystokyo.paper.profile.ProfileProperty;
+import de.tr7zw.changeme.nbtapi.NBTItem;
+import de.tr7zw.changeme.nbtapi.utils.GsonWrapper;
+import de.tr7zw.changeme.nbtapi.utils.MinecraftVersion;
 import dev.lone.pocketmobs.CaughtMob;
 import dev.lone.pocketmobs.Settings;
 import dev.lone.pocketmobs.Utils;
 import dev.lone.pocketmobs.Main;
 import dev.lone.pocketmobs.utils.EntityUtil;
 import dev.lone.pocketmobs.utils.InvUtil;
-import dev.lone.LoneLibs.nbt.nbtapi.NBTItem;
-import dev.lone.LoneLibs.nbt.nbtapi.utils.GsonWrapper;
-import dev.lone.LoneLibs.nbt.nbtapi.utils.MinecraftVersion;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -17,11 +19,9 @@ import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class Ball
 {
@@ -174,9 +174,12 @@ public class Ball
         ItemStack item = new ItemStack(Material.STONE);
 
         item = new ItemStack(Material.PLAYER_HEAD, 1);
-        item = HeadLib.setSkullOwner(item, UUID.randomUUID(), headTexture);
 
-        ItemMeta meta = item.getItemMeta();
+        SkullMeta meta = (SkullMeta) item.getItemMeta();
+        PlayerProfile profile = Bukkit.createProfile(UUID.randomUUID());
+        profile.setProperty(new ProfileProperty("textures", headTexture));
+        meta.setPlayerProfile(profile);
+
         meta.setDisplayName(displayName);
         item.setItemMeta(meta);
 

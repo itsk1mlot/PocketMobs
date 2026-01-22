@@ -20,7 +20,6 @@ public class MainCommand implements CommandExecutor, TabCompleter
     GetCmd getCommand = new GetCmd();
     GiveCmd giveCommand = new GiveCmd();
     DebugCmd debugCommand = new DebugCmd();
-    RecipeCmd recipeCommand = new RecipeCmd();
     ReloadCmd reloadCmd = new ReloadCmd();
 
     public MainCommand()
@@ -36,8 +35,6 @@ public class MainCommand implements CommandExecutor, TabCompleter
             list.add("get");
         if("debug".contains(partialWord))
             list.add("debug");
-        if("recipes".contains(partialWord))
-            list.add("recipes");
         if("give".contains(partialWord))
             list.add("give");
         if("reload".contains(partialWord))
@@ -67,11 +64,6 @@ public class MainCommand implements CommandExecutor, TabCompleter
         else if(args[0].equalsIgnoreCase("debug"))
         {
             debugCommand.handle(sender, command, label, args);
-            return true;
-        }
-        else if(args[0].equalsIgnoreCase("recipes"))
-        {
-            recipeCommand.handle(sender, command, label, args);
             return true;
         }
         else if(args[0].equalsIgnoreCase("reload"))

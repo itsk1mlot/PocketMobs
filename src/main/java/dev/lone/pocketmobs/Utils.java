@@ -3,7 +3,7 @@ package dev.lone.pocketmobs;
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketContainer;
-import dev.lone.LoneLibs.nbt.nbtapi.utils.MinecraftVersion;
+import de.tr7zw.changeme.nbtapi.utils.MinecraftVersion;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;

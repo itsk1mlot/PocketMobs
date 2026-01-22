@@ -1,6 +1,6 @@
 package dev.lone.pocketmobs.commands;
 
-import dev.lone.LoneLibs.nbt.nbtapi.NBTItem;
+import de.tr7zw.changeme.nbtapi.NBTItem;
 import dev.lone.pocketmobs.Settings;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

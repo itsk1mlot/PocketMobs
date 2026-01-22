@@ -1,8 +1,8 @@
 package dev.lone.pocketmobs;
 
-import dev.lone.LoneLibs.Events;
 import dev.lone.pocketmobs.commands.MainCommand;
 import net.milkbowl.vault.economy.Economy;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -30,7 +30,7 @@ public final class Main extends JavaPlugin
         mainCommand = new MainCommand();
         ballsManager = new BallsManager(this);
 
-        Events.register(this, new BallsEventsListener());
+        Bukkit.getPluginManager().registerEvents(new BallsEventsListener(), this);
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})

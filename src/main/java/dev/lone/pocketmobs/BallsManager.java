@@ -1,13 +1,13 @@
 package dev.lone.pocketmobs;
 
+import de.tr7zw.changeme.nbtapi.NBTItem;
+import de.tr7zw.changeme.nbtapi.utils.MinecraftVersion;
 import dev.lone.pocketmobs.utils.CustomConfigFile;
 import dev.lone.pocketmobs.data.BallEffect;
 import dev.lone.pocketmobs.data.ParticleData;
 import dev.lone.pocketmobs.data.SoundData;
 import dev.lone.pocketmobs.data.Ball;
 import dev.lone.pocketmobs.utils.Mat;
-import dev.lone.LoneLibs.nbt.nbtapi.NBTItem;
-import dev.lone.LoneLibs.nbt.nbtapi.utils.MinecraftVersion;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
@@ -148,7 +148,8 @@ public class BallsManager
                         if (MinecraftVersion.getVersion().getVersionId() >= MinecraftVersion.MC1_13_R1.getVersionId())
                             recipe.setIngredient(ingredientKey.charAt(0), Mat.valueOf(defined.getString(ingredientKey)).getMaterial());
                         else
-                            recipe.setIngredient(ingredientKey.charAt(0), Mat.valueOf(defined.getString(ingredientKey)).getItemStack().getData());
+//                            recipe.setIngredient(ingredientKey.charAt(0), Mat.valueOf(defined.getString(ingredientKey)).getItemStack().getData());
+                            Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[PocketMobs] Crafting recipes for Minecraft versions below 1.13 are not supported anymore due to API limitations.");
                     }catch(IllegalArgumentException e)
                     {
                         e.printStackTrace();
